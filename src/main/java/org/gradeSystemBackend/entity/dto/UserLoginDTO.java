@@ -22,9 +22,24 @@ public class UserLoginDTO {
      */
     private String identity;
 
-    public void isValidate() {
-        Assert.isTrue(username != null && !username.isEmpty(), "用户名不得为空");
-        Assert.isTrue(password != null && !password.isEmpty(), "口令不得为空");
-        Assert.isTrue(identity != null && !identity.isEmpty(), "口令不得为空");
+    public String isValidate() {
+        StringBuilder errors = new StringBuilder();
+
+        if (username == null || username.isEmpty()) {
+            errors.append("用户名不能为空\n");
+        }
+        if (password == null || password.isEmpty()) {
+            errors.append("口令不能为空\n");
+        }
+        if (identity == null || identity.isEmpty()) {
+            errors.append("身份识别码不能为空\n");
+        }
+
+        if (errors.length() == 0) {
+            return "验证通过";
+        } else {
+            return errors.toString();
+        }
     }
+
 }

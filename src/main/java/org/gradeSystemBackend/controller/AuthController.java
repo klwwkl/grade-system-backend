@@ -1,5 +1,6 @@
 package org.gradeSystemBackend.controller;
 
+import org.gradeSystemBackend.entity.Result;
 import org.gradeSystemBackend.entity.User;
 import org.gradeSystemBackend.entity.dto.UserLoginDTO;
 import org.gradeSystemBackend.entity.vo.UserLoginVO;
@@ -10,32 +11,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-    public final UserService userService;
+    private final UserService userService;
 
     public AuthController(UserService userService) {
         this.userService = userService;
     }
 
-    /**
-     * 用户登录
-     *
-     * @param userLoginDTO 用户登录参数
-     * @return "用户信息"
-     */
     @PostMapping(value = "/login")
-    public UserLoginVO login(@RequestBody UserLoginDTO userLoginDTO) {
-        userLoginDTO.isValidate();
-        //用户信息
+    public Result<?> login(@RequestBody UserLoginDTO userLoginDTO) {
+        if(!userLoginDTO.isValidate().equals("验证通过")){
+            return Result.error(userLoginDTO.isValidate());
+        }
+
         User user = userService.queryByUsername(userLoginDTO.getUsername());
-        //账号校验
-        Assert.notNull(user, "用户不存在");
-        //口令校验
-        Assert.isTrue(userService.passwordCompare(user, userLoginDTO.getPassword()), "口令不正确");
-        return userService.getUserByLogin(userLoginDTO);
+        if (user == null) {
+            return Result.error("用户不存在");
+        }
+
+        if (!userService.passwordCompare(user, userLoginDTO.getPassword())) {
+            return Result.error("口令不正确");
+        }
+
+        UserLoginVO userLoginVO = userService.getUserByLogin(userLoginDTO);
+        return Result.success(userLoginVO);
     }
 }
