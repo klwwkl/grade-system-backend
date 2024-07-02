@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.gradeSystemBackend.mapper.UserMapper">
+    <!-- 根据用户名、密码和身份查询用户信息 -->
+    <select id="getUserByLogin" resultType="org.gradeSystemBackend.entity.vo.UserLoginVO">
+        SELECT
+            CASE
+                WHEN u.identity = 0 THEN t.name
+                WHEN u.identity = 1 THEN s.name
+                END AS name,
+            CASE
+                WHEN u.identity = 0 THEN u.teacher_id
+                WHEN u.identity = 1 THEN u.student_id
+                END AS uid
+        FROM users u
+                 LEFT JOIN teachers t ON u.teacher_id = t.id AND u.identity = 0
+                 LEFT JOIN students s ON u.student_id = s.id AND u.identity = 1
+        WHERE u.username = #{username} AND u.password = #{password} AND u.identity = #{identity}
+    </select>
+    <select id="queryByUsername" resultType="org.gradeSystemBackend.entity.User">
+        select * from users where username = #{username}
+    </select>
+</mapper>
