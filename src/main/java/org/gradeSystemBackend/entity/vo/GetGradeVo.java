@@ -1,28 +1,18 @@
-package org.gradeSystemBackend.entity;
+package org.gradeSystemBackend.entity.vo;
 
 import lombok.Data;
 
 @Data
-public class Grade {
+public class GetGradeVo {
     /**
-     * 成绩ID
+     * 课程名
      */
-    private Integer id;
+    private String courseName;
 
     /**
-     * 关联学生表id
+     * 老师姓名
      */
-    private Integer studentID;
-
-    /**
-     * 关联教师表id
-     */
-    private Integer teacherID;
-
-    /**
-     * 关联课程表id
-     */
-    private Integer courseID;
+    private String teacherName;
 
     /**
      * 考试成绩
@@ -43,5 +33,4 @@ public class Grade {
      * 总成绩
      */
     private Integer totalScore;
-
 }

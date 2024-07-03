@@ -12,7 +12,7 @@ public class Student {
     /**
      * 学号
      */
-    private Integer student_number;
+    private Integer studentNumber;
 
     /**
      * 姓名

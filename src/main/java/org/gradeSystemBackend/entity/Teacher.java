@@ -12,7 +12,7 @@ public class Teacher {
     /**
      * 工号
      */
-    private Integer teacher_number;
+    private Integer teacherNumber;
 
     /**
      * 姓名

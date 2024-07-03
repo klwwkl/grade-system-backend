@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.gradeSystemBackend.mapper.GradeMapper">
+
+    <!-- 根据学生ID和课程ID查询学生在某课程下的成绩 -->
+    <select id="getStudentCourseGrade" resultType="org.gradeSystemBackend.entity.vo.GetGradeVo">
+        SELECT c.course_name AS courseName,
+               t.name AS teacherName,
+               g.exam_score AS examScore,
+               g.regular_score AS regularScore,
+               g.extra_score AS extraScore,
+               g.total_score AS totalScore
+        FROM grades g
+                 JOIN courses c ON g.course_id = c.id
+                 JOIN teachers t ON c.teacher_id = t.id
+        WHERE g.student_id = #{studentId} AND g.course_id = #{courseId}
+    </select>
+
+</mapper>
