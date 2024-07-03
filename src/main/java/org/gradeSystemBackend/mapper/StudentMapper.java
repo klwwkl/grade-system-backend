@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface StudentMapper extends BaseMapper<Student> {
-    public StudentCourseListVO[] getStudentCourseList(Integer studentId);
+    StudentCourseListVO[] getStudentCourseList(Integer studentId);
 }
