@@ -1,7 +1,9 @@
 package org.gradeSystemBackend.service;
 
-import org.gradeSystemBackend.entity.vo.GetGradeVo;
+import org.gradeSystemBackend.entity.dto.GetStudentCourseGradeDTO;
+import org.gradeSystemBackend.entity.vo.GetGradeVO;
 
 public interface GradeService {
-    GetGradeVo getStudentCourseGrade(Integer studentId, Integer courseId);
+    GetGradeVO getStudentCourseGrade(Integer studentId, Integer courseId);
+    Integer updateStudentCourseGrade(GetStudentCourseGradeDTO getStudentCourseGradeDTO);
 }

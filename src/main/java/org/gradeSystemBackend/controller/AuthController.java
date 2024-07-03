@@ -6,13 +6,11 @@ import org.gradeSystemBackend.entity.dto.UserLoginDTO;
 import org.gradeSystemBackend.entity.vo.UserLoginVO;
 import org.gradeSystemBackend.service.UserService;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     private final UserService userService;

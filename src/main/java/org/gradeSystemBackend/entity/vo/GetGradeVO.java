@@ -3,7 +3,7 @@ package org.gradeSystemBackend.entity.vo;
 import lombok.Data;
 
 @Data
-public class GetGradeVo {
+public class GetGradeVO {
     /**
      * 课程名
      */

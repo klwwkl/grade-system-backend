@@ -4,7 +4,7 @@
 <mapper namespace="org.gradeSystemBackend.mapper.GradeMapper">
 
     <!-- 根据学生ID和课程ID查询学生在某课程下的成绩 -->
-    <select id="getStudentCourseGrade" resultType="org.gradeSystemBackend.entity.vo.GetGradeVo">
+    <select id="getStudentCourseGrade" resultType="org.gradeSystemBackend.entity.vo.GetGradeVO">
         SELECT c.course_name AS courseName,
                t.name AS teacherName,
                g.exam_score AS examScore,
@@ -16,5 +16,15 @@
                  JOIN teachers t ON c.teacher_id = t.id
         WHERE g.student_id = #{studentId} AND g.course_id = #{courseId}
     </select>
+    <!-- 更新学生在某课程下的成绩 -->
+    <update id="updateStudentCourseGrade">
+        UPDATE grades
+        SET
+            exam_score = COALESCE(#{examScore}, exam_score),
+            regular_score = COALESCE(#{regularScore}, regular_score),
+            extra_score = COALESCE(#{extraScore}, extra_score),
+            total_score = COALESCE(#{totalScore}, total_score)
+        WHERE student_id = #{studentId} AND course_id = #{courseId}
+    </update>
 
 </mapper>
