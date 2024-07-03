@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.gradeSystemBackend.mapper.StudentMapper">
+
+    <!-- 查询指定学生选修的所有课程信息 -->
+    <select id="getStudentCourseList" resultType="org.gradeSystemBackend.entity.vo.StudentCourseListVO">
+        SELECT
+            c.id AS courseId,
+            c.course_name AS courseName
+        FROM courses c
+                 INNER JOIN grades g ON c.id = g.course_id
+        WHERE g.student_id = #{studentId}
+    </select>
+
+</mapper>

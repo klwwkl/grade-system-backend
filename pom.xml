@@ -13,19 +13,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  <repositories>
-    <repository>
-      <id>nexus</id>
-      <name>Nexus Public</name>
-      <url>http://maven.hzauth.com/repository/maven-public/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -72,11 +59,6 @@
       <version>2.0.25</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.machine.web</groupId>
-      <artifactId>machine-web-mvc</artifactId>
-      <version>1.0.6-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
 
