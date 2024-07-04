@@ -11,7 +11,7 @@
         FROM courses
         WHERE teacher_id = #{teacherId}
     </select>
-    <select id="getCourseStudentList" resultType="org.gradeSystemBackend.entity.vo.CourseStudentListVO">
+    <select id="getStudentList" resultType="org.gradeSystemBackend.entity.vo.CourseStudentListVO">
         SELECT s.id AS studentId,
                s.name AS studentName
         FROM students s

@@ -23,14 +23,14 @@ public class TeacherController {
         return Result.success(teacherService.getTeacherCourseList(teacherId));
     }
 
-    @GetMapping(value = "/getCourseStudentList")
-    public Result<?> getCourseStudentList(@RequestParam("teacherId") Integer teacherId,@RequestParam("courseId") Integer courseId){
+    @GetMapping(value = "/getStudentList")
+    public Result<?> getStudentList(@RequestParam("teacherId") Integer teacherId,@RequestParam("courseId") Integer courseId){
         if(teacherId==null){
             return Result.error("教师id为空");
         }
         if(courseId==null){
             return Result.error("课程id为空");
         }
-        return Result.success(teacherService.getCourseStudentList(teacherId,courseId));
+        return Result.success(teacherService.getStudentList(teacherId,courseId));
     }
 }

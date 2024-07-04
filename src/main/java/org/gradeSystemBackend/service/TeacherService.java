@@ -7,5 +7,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TeacherService {
     TeacherCourseListVO[] getTeacherCourseList(Integer teacherId);
-    CourseStudentListVO[] getCourseStudentList(Integer teacherId,Integer courseId);
+    CourseStudentListVO[] getStudentList(Integer teacherId,Integer courseId);
 }

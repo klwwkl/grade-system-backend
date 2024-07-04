@@ -21,7 +21,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     }
 
     @Override
-    public CourseStudentListVO[] getCourseStudentList(Integer teacherId,Integer courseId) {
-        return this.baseMapper.getCourseStudentList(teacherId,courseId);
+    public CourseStudentListVO[] getStudentList(Integer teacherId,Integer courseId) {
+        return this.baseMapper.getStudentList(teacherId,courseId);
     }
 }

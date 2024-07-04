@@ -3,7 +3,7 @@ package org.gradeSystemBackend.entity.dto;
 import lombok.Data;
 
 @Data
-public class GetStudentCourseGradeDTO {
+public class UpdateCourseGradeDTO {
     /**
      * 学生ID
      */

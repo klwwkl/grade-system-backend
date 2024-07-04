@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
 public interface TeacherMapper extends BaseMapper<Teacher> {
     TeacherCourseListVO[] getTeacherCourseList(Integer teacherId);
 
-    CourseStudentListVO[] getCourseStudentList(Integer teacherId, Integer courseId);
+    CourseStudentListVO[] getStudentList(Integer teacherId, Integer courseId);
 }

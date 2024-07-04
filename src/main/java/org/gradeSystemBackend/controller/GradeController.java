@@ -1,10 +1,7 @@
 package org.gradeSystemBackend.controller;
 
 import org.gradeSystemBackend.entity.Result;
-import org.gradeSystemBackend.entity.User;
-import org.gradeSystemBackend.entity.dto.GetStudentCourseGradeDTO;
-import org.gradeSystemBackend.entity.dto.UserLoginDTO;
-import org.gradeSystemBackend.entity.vo.UserLoginVO;
+import org.gradeSystemBackend.entity.dto.UpdateCourseGradeDTO;
 import org.gradeSystemBackend.service.GradeService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,23 +15,23 @@ public class GradeController {
         this.gradeService = gradeService;
     }
 
-    @GetMapping(value = "/getStudentCourseGrade")
-    public Result<?> getStudentCourseGrade(@RequestParam("studentId") Integer studentId,@RequestParam("courseId") Integer courseId){
+    @GetMapping(value = "/getCourseGrade")
+    public Result<?> getCourseGrade(@RequestParam("studentId") Integer studentId,@RequestParam("courseId") Integer courseId){
         if(studentId==null){
             return Result.error("学生id为空");
         }
         if(courseId==null){
             return Result.error("课程id为空");
         }
-        return Result.success(gradeService.getStudentCourseGrade(studentId,courseId));
+        return Result.success(gradeService.getCourseGrade(studentId,courseId));
     }
 
-    @PostMapping(value = "/updateStudentCourseGrade")
-    public Result<?> login(@RequestBody GetStudentCourseGradeDTO getStudentCourseGradeDTO) {
-        if(!getStudentCourseGradeDTO.isValidate().equals("验证通过")){
-            return Result.error(getStudentCourseGradeDTO.isValidate());
+    @PostMapping(value = "/updateCourseGrade")
+    public Result<?> login(@RequestBody UpdateCourseGradeDTO updateCourseGradeDTO) {
+        if(!updateCourseGradeDTO.isValidate().equals("验证通过")){
+            return Result.error(updateCourseGradeDTO.isValidate());
         }
-        gradeService.updateStudentCourseGrade(getStudentCourseGradeDTO);
+        gradeService.updateCourseGrade(updateCourseGradeDTO);
         return Result.success("修改成功！");
     }
 }
